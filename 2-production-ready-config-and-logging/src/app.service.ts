@@ -32,7 +32,6 @@ export class AppService {
             appName: this.configService.get<string>("app.name"),
             appVersion: this.configService.get<string>("app.version"),
             appPort: this.configService.get<number>("app.port"),
-            logLevel: this.configService.get<string>("log.level"),
         }
     }
 }

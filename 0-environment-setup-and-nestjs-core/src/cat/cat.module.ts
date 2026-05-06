@@ -1,11 +1,15 @@
+/**
+ * CatModule — đăng ký controller + service, export CatService cho DogModule.
+ * (EN: CatModule — registers controller + service, exports CatService for DogModule.)
+ */
 import {
-    Module 
+    Module,
 } from "@nestjs/common"
 import {
-    CatController 
+    CatController,
 } from "./cat.controller"
 import {
-    CatService 
+    CatService,
 } from "./cat.service"
 
 @Module({

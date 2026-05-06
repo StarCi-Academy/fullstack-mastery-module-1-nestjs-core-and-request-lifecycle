@@ -1,60 +1,52 @@
+/**
+ * Module gốc — gom ItemsModule + đăng ký middleware/guard/interceptor toàn cục.
+ * (EN: Root module — aggregates ItemsModule + registers global middleware/guard/interceptor.)
+ */
 import {
-    MiddlewareConsumer, Module, NestModule 
+    MiddlewareConsumer,
+    Module,
+    NestModule,
 } from "@nestjs/common"
 import {
-    APP_GUARD, APP_INTERCEPTOR 
+    APP_GUARD,
+    APP_INTERCEPTOR,
 } from "@nestjs/core"
 import {
-    ItemsController 
-} from "./items.controller"
+    ItemsModule,
+} from "./items"
 import {
-    ItemsService 
-} from "./items.service"
-import {
-    TimingGuard 
-} from "./timing.guard"
-import {
-    ExecutionTimerInterceptor 
-} from "./execution-timer.interceptor"
-import {
-    ResponseTransformInterceptor 
-} from "./response-transform.interceptor"
-import {
-    LoggerMiddleware 
-} from "./logger.middleware"
-import {
-    RequestIdMiddleware 
-} from "./request-id.middleware"
+    RequestIdMiddleware,
+    LoggerMiddleware,
+    TimingGuard,
+    ExecutionTimerInterceptor,
+    ResponseTransformInterceptor,
+} from "./common"
 
 @Module({
-    controllers: [ItemsController],
+    imports: [ItemsModule],
     providers: [
-        ItemsService,
         {
-            provide: APP_GUARD, useClass: TimingGuard 
+            provide: APP_GUARD,
+            useClass: TimingGuard,
         },
         {
-            provide: APP_INTERCEPTOR, useClass: ExecutionTimerInterceptor 
+            provide: APP_INTERCEPTOR,
+            useClass: ExecutionTimerInterceptor,
         },
         {
-            provide: APP_INTERCEPTOR, useClass: ResponseTransformInterceptor 
+            provide: APP_INTERCEPTOR,
+            useClass: ResponseTransformInterceptor,
         },
     ],
 })
 export class AppModule implements NestModule {
     /**
-   * Đăng ký middleware toàn cục để request luôn có request-id và access log
-   * (EN: register global middlewares so every request has request-id and access log).
-   *
-   * @param consumer - Middleware consumer của Nest (EN: Nest middleware consumer).
-   * @returns void - Không trả giá trị (EN: no return value).
-   * @sideEffects Gắn `RequestIdMiddleware` và `LoggerMiddleware` cho mọi route
-   * (EN: applies `RequestIdMiddleware` and `LoggerMiddleware` to all routes).
-   */
+     * Đăng ký middleware toàn cục để request luôn có request-id và access log.
+     * (EN: Register global middlewares so every request has request-id and access log.)
+     */
     configure(consumer: MiddlewareConsumer) {
-    // Thứ tự middleware rất quan trọng: cần request-id trước để logger luôn có correlation key
-    // (EN: middleware order is critical: request-id must run first so logger always has correlation key).
-        consumer.apply(RequestIdMiddleware,
-            LoggerMiddleware).forRoutes("*")
+        // Thứ tự middleware rất quan trọng: cần request-id trước để logger luôn có correlation key.
+        // (EN: Middleware order is critical: request-id must run first so logger always has correlation key.)
+        consumer.apply(RequestIdMiddleware, LoggerMiddleware).forRoutes("*")
     }
 }

@@ -1,22 +1,9 @@
-import {
-    NestFactory 
-} from "@nestjs/core"
-import {
-    AppModule 
-} from "./app.module"
-
 /**
- * Bootstrap ứng dụng cho bài request lifecycle
- * (EN: bootstrap application for request-lifecycle lesson).
- *
- * @returns Promise<void> - Hoàn tất khi app bắt đầu listen cổng HTTP
- * (EN: resolves when app starts listening on HTTP port).
- * @sideEffects Tạo HTTP server và kích hoạt toàn bộ middleware/guard/interceptor/pipes
- * (EN: creates HTTP server and activates middleware/guard/interceptor/pipes).
+ * Entry Node (`nest build` → dist/main.js) — chỉ gọi bootstrap đã export.
+ * (EN: Node entry (`nest build` → dist/main.js) — invokes exported bootstrap only.)
  */
-async function bootstrap(): Promise<void> {
-    const app = await NestFactory.create(AppModule)
-    await app.listen(process.env.PORT ?? 3000)
-}
+import {
+    bootstrap,
+} from "./bootstrap"
 
 void bootstrap()

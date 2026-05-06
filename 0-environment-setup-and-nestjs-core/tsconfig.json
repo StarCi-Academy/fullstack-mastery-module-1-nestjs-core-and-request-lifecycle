@@ -20,6 +20,10 @@
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@0-environment-setup-and-nestjs-core": ["src/index.ts"],
+      "@0-environment-setup-and-nestjs-core/*": ["src/*"]
+    }
   }
 }

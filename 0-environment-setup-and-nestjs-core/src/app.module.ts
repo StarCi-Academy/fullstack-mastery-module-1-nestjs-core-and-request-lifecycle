@@ -1,15 +1,18 @@
+/**
+ * Module gốc — gom CatModule + DogModule để demo Module boundary và DI.
+ * (EN: Root module — aggregates CatModule + DogModule to demo Module boundary and DI.)
+ */
 import {
-    Module 
+    Module,
 } from "@nestjs/common"
 import {
-    CatModule 
+    CatModule,
 } from "./cat"
 import {
-    DogModule 
+    DogModule,
 } from "./dog"
 
 @Module({
-    imports: [CatModule,
-        DogModule],
+    imports: [CatModule, DogModule],
 })
 export class AppModule {}
