@@ -31,11 +31,11 @@ import {
         },
         {
             provide: APP_INTERCEPTOR,
-            useClass: ExecutionTimerInterceptor,
+            useClass: ResponseTransformInterceptor,
         },
         {
             provide: APP_INTERCEPTOR,
-            useClass: ResponseTransformInterceptor,
+            useClass: ExecutionTimerInterceptor,
         },
     ],
 })
