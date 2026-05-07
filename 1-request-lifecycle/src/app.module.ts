@@ -47,6 +47,7 @@ export class AppModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
         // Thứ tự middleware rất quan trọng: cần request-id trước để logger luôn có correlation key.
         // (EN: Middleware order is critical: request-id must run first so logger always has correlation key.)
-        consumer.apply(RequestIdMiddleware, LoggerMiddleware).forRoutes("*")
+        consumer.apply(RequestIdMiddleware,
+            LoggerMiddleware).forRoutes("*")
     }
 }

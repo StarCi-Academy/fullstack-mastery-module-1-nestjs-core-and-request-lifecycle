@@ -38,7 +38,8 @@ export class ItemsController {
      * (EN: Handle `GET /items/:id` with mandatory pipe validation.)
      */
     @Get(":id")
-    findOne(@Param("id", ParsePositiveIntPipe) id: number) {
+    findOne(@Param("id",
+        ParsePositiveIntPipe) id: number) {
         return this.itemsService.findOne(id)
     }
 }

@@ -16,8 +16,12 @@ export class CatService {
         // Dùng dữ liệu cố định để bài DI tập trung vào module boundary thay vì DB setup.
         // (EN: Use static data so DI lesson focuses on module boundaries instead of DB setup.)
         return [
-            { id: 1, name: "Milo" },
-            { id: 2, name: "Luna" },
+            {
+                id: 1, name: "Milo" 
+            },
+            {
+                id: 2, name: "Luna" 
+            },
         ]
     }
 

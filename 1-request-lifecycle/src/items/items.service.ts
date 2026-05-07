@@ -16,8 +16,12 @@ export class ItemsService {
         // Trả dữ liệu in-memory để bài học tập trung vào pipeline, không phụ thuộc DB.
         // (EN: Return in-memory data so the lesson focuses on pipeline instead of DB setup.)
         return [
-            { id: 1, name: "keyboard" },
-            { id: 2, name: "mouse" },
+            {
+                id: 1, name: "keyboard" 
+            },
+            {
+                id: 2, name: "mouse" 
+            },
         ]
     }
 
@@ -26,6 +30,8 @@ export class ItemsService {
      * (EN: Return item detail by id that has passed pipe validation.)
      */
     findOne(id: number) {
-        return { id, name: `item-${id}` }
+        return {
+            id, name: `item-${id}` 
+        }
     }
 }

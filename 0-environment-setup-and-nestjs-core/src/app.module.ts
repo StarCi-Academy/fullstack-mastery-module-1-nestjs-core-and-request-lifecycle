@@ -13,6 +13,7 @@ import {
 } from "./dog"
 
 @Module({
-    imports: [CatModule, DogModule],
+    imports: [CatModule,
+        DogModule],
 })
 export class AppModule {}

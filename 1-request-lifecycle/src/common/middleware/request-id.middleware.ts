@@ -30,7 +30,8 @@ export class RequestIdMiddleware implements NestMiddleware {
         req.headers["x-request-id"] = requestId
         // Echo về response để client hoặc API gateway dễ correlate khi debug.
         // (EN: Echo back to response so client or API gateway can correlate during debugging.)
-        res.setHeader("x-request-id", requestId)
+        res.setHeader("x-request-id",
+            requestId)
         next()
     }
 }
