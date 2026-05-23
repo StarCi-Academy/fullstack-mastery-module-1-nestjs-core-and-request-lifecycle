@@ -18,7 +18,7 @@
 ```
 **Pass criteria:** all four keys present; `requestId` is a UUID; `executionMs` is a non-negative number.
 
-## Flow 2 -- Verify Pipe rejects invalid input (`GET /items/-1`)
+## Flow 2 -- Pipe reject negative id (`GET /items/-1`)
 **Purpose:** confirm `ParsePositiveIntPipe` blocks `-1` before the handler runs, returning HTTP 400.
 **Command (PowerShell):** `Invoke-RestMethod -Uri http://localhost:3000/items/-1`
 **Command (curl):** `curl -s http://localhost:3000/items/-1`
@@ -32,20 +32,20 @@
 ```
 **Pass criteria:** HTTP 400, message exactly `"id must be a positive integer"`; the handler did NOT execute.
 
-## Flow 3 -- Verify Pipe happy path + dynamic wrapper (`GET /items/10`)
-**Purpose:** confirm Pipe coerces any positive integer (not just `5`) and the interceptor wraps the dynamic payload.
-**Command (PowerShell):** `Invoke-RestMethod -Uri http://localhost:3000/items/10`
-**Command (curl):** `curl -s http://localhost:3000/items/10`
+## Flow 3 -- Pipe accept positive + wrap dynamic payload (`GET /items/5`)
+**Purpose:** confirm Pipe coerces a positive integer and `ResponseTransformInterceptor` wraps the dynamic payload with the `{ data, timestamp, requestId, executionMs }` envelope.
+**Command (PowerShell):** `Invoke-RestMethod -Uri http://localhost:3000/items/5`
+**Command (curl):** `curl -s http://localhost:3000/items/5`
 **Expected response (HTTP 200):**
 ```json
 {
-  "data": { "id": 10, "name": "item-10" },
+  "data": { "id": 5, "name": "item-5" },
   "timestamp": "<ISO-timestamp>",
   "requestId": "<uuid>",
   "executionMs": 1
 }
 ```
-**Pass criteria:** `data.id === 10`, `data.name === "item-10"`; wrapper keys all present.
+**Pass criteria:** `data.id === 5`, `data.name === "item-5"`; `requestId` is a UUID v4; all four wrapper keys present.
 
 ## Flow 4 -- Verify Guard layer (`GET /items/restricted?role=`)
 **Purpose:** confirm `RoleGuard` reads `request.query.role` and gates the handler with HTTP 403 for non-admin roles.

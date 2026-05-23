@@ -16,16 +16,32 @@
 ```
 **Pass criteria:** terminal shows Winston `nestLike`-formatted log lines (with `[<context>]` and colours), proving the override took effect.
 
-## Flow 2 -- Compare local vs production (`envFilePath` swap)
-**Purpose:** confirm app identity is config-driven; switching `envFilePath` to `.env.production` changes the response without any source edit beyond `app.module.ts`.
+## Flow 2 -- Local profile response (`GET /` with `.env.local`)
+**Purpose:** confirm `.env.local` is loaded by `ConfigModule` and the controller emits the local-flavoured response.
 **Command (PowerShell):** `Invoke-RestMethod -Uri http://localhost:3000/`
 **Command (curl):** `curl -s http://localhost:3000/`
-**Steps:**
-1. Run with `.env.local` first -- response shows `"env": "local"`.
-2. Edit `src/app.module.ts` to uncomment `".env.production"` and comment out `".env.local"`, restart.
-3. Hit `GET /` again -- response shows `"env": "production"`.
+**Expected response (HTTP 200):**
+```json
+{
+  "message": "local - config-and-logging-ready",
+  "env": "local",
+  "appName": "local",
+  "appVersion": "0.0.1",
+  "appPort": 3000
+}
+```
+**Pass criteria:** all five keys match exactly; no hard-coded `"local"` literal in the controller (value flows through `ConfigService.get<AppConfig>("app")`).
 
-**Expected response (HTTP 200) -- production profile:**
+## Flow 3 -- Switch to production profile (`envFilePath` swap + restart)
+**Purpose:** confirm changing `envFilePath` priority to `.env.production` in `app.module.ts` flips the response without any other source change.
+**Steps:**
+1. Edit `src/app.module.ts` -- uncomment `".env.production"` and comment out `".env.local"` in the `envFilePath` array.
+2. Restart the app.
+3. Hit `GET /`.
+
+**Command (PowerShell):** `Invoke-RestMethod -Uri http://localhost:3000/`
+**Command (curl):** `curl -s http://localhost:3000/`
+**Expected response (HTTP 200):**
 ```json
 {
   "message": "production - config-and-logging-ready",
@@ -35,9 +51,9 @@
   "appPort": 3000
 }
 ```
-**Pass criteria:** the `env`, `message`, and `appName` fields all flip from `local` → `production` without code changes outside `app.module.ts`.
+**Pass criteria:** the `env`, `message`, and `appName` fields all flip from `local` → `production` purely because `envFilePath` priority changed.
 
-## Flow 3 -- Verify typed AppConfig snapshot (`GET /config`)
+## Flow 4 -- Verify typed AppConfig snapshot (`GET /config`)
 **Purpose:** confirm `ConfigService.get<AppConfig>("app")` returns the full namespace as a typed object with no `any`.
 **Command (PowerShell):** `Invoke-RestMethod -Uri http://localhost:3000/config`
 **Command (curl):** `curl -s http://localhost:3000/config`
@@ -53,7 +69,7 @@
 ```
 **Pass criteria:** all five `AppConfig` keys present, values match the `.env.local` file; types are correct (`port` is a number, others are strings).
 
-## Flow 4 -- Verify Winston file transport writes structured JSON (`logs/app.log`)
+## Flow 5 -- Verify Winston file transport writes structured JSON (`logs/app.log`)
 **Purpose:** confirm the file transport actually persists log lines and that each line is structured JSON, not plain text.
 **Command (PowerShell):**
 ```powershell
