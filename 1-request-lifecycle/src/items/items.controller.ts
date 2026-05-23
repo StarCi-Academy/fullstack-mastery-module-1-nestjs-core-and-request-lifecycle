@@ -27,7 +27,7 @@ export class ItemsController {
      * (EN: Handle `GET /items` to fetch item list.)
      */
     @Get()
-    findAll() {
+    findAll(): Array<{ id: number; name: string }> {
         // Tách biệt routing và business để giảm coupling khi mở rộng endpoint.
         // (EN: Separate routing from business logic to reduce coupling when scaling endpoints.)
         return this.itemsService.findAll()
@@ -39,7 +39,7 @@ export class ItemsController {
      */
     @Get(":id")
     findOne(@Param("id",
-        ParsePositiveIntPipe) id: number) {
+        ParsePositiveIntPipe) id: number): { id: number; name: string } {
         return this.itemsService.findOne(id)
     }
 }

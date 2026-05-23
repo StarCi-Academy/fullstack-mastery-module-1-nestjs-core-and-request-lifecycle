@@ -18,9 +18,10 @@ export async function bootstrap(): Promise<void> {
         whitelist: true,
         forbidUnknownValues: false,
     }))
-    // Cổng: biến môi trường PORT hoặc 3000.
-    // (EN: Port from env PORT or default 3000.)
-    const port = Number(process.env.PORT) || 3000
-    await app.listen(port,
+    // Cổng cố định 3000 — bài L1 dạy request pipeline (middleware/guard/pipe/interceptor),
+    // chưa giới thiệu ConfigModule (đó là chủ đề L2). Literal port giữ scope bài học gọn.
+    // (EN: Hardcoded port 3000 — L1 teaches the request pipeline, ConfigModule arrives
+    // in L2. A literal here keeps the lesson focus on pipeline ordering, not config.)
+    await app.listen(3000,
         "0.0.0.0")
 }

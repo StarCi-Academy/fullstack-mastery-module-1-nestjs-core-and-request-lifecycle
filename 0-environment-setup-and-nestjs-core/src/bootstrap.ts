@@ -11,9 +11,10 @@ import {
 
 export async function bootstrap(): Promise<void> {
     const app = await NestFactory.create(AppModule)
-    // Cổng: biến môi trường PORT hoặc 3000.
-    // (EN: Port from env PORT or default 3000.)
-    const port = Number(process.env.PORT) || 3000
-    await app.listen(port,
+    // Cổng cố định 3000 — bài L0 dạy DI và module boundary, chưa giới thiệu ConfigModule.
+    // Literal port giúp giữ scope bài học gọn, đến L2 mới route qua ConfigService.
+    // (EN: Hardcoded port 3000 — L0 teaches DI + module boundaries, ConfigModule
+    // is introduced in L2. Keeping a literal here keeps the lesson scope tight.)
+    await app.listen(3000,
         "0.0.0.0")
 }

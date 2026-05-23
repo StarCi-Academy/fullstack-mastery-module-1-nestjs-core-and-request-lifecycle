@@ -44,7 +44,7 @@ export class AppModule implements NestModule {
      * Đăng ký middleware toàn cục để request luôn có request-id và access log.
      * (EN: Register global middlewares so every request has request-id and access log.)
      */
-    configure(consumer: MiddlewareConsumer) {
+    configure(consumer: MiddlewareConsumer): void {
         // Thứ tự middleware rất quan trọng: cần request-id trước để logger luôn có correlation key.
         // (EN: Middleware order is critical: request-id must run first so logger always has correlation key.)
         consumer.apply(RequestIdMiddleware,

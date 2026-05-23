@@ -12,15 +12,15 @@ export class ItemsService {
      * Trả danh sách item mẫu cho endpoint list.
      * (EN: Return sample item list for list endpoint.)
      */
-    findAll() {
+    findAll(): Array<{ id: number; name: string }> {
         // Trả dữ liệu in-memory để bài học tập trung vào pipeline, không phụ thuộc DB.
         // (EN: Return in-memory data so the lesson focuses on pipeline instead of DB setup.)
         return [
             {
-                id: 1, name: "keyboard" 
+                id: 1, name: "keyboard"
             },
             {
-                id: 2, name: "mouse" 
+                id: 2, name: "mouse"
             },
         ]
     }
@@ -29,9 +29,9 @@ export class ItemsService {
      * Trả chi tiết item theo id đã qua pipe validation.
      * (EN: Return item detail by id that has passed pipe validation.)
      */
-    findOne(id: number) {
+    findOne(id: number): { id: number; name: string } {
         return {
-            id, name: `item-${id}` 
+            id, name: `item-${id}`
         }
     }
 }

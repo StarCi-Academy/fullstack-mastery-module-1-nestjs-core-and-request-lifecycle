@@ -24,7 +24,7 @@ export class AppController {
    * @returns object - Payload trạng thái runtime (EN: runtime status payload).
    */
   @Get()
-    getStatus() {
+    getStatus(): ReturnType<AppService["getStatus"]> {
     // Giữ controller mỏng để dễ mở rộng thêm auth/rate-limit mà không ảnh hưởng business logic
     // (EN: keep controller thin for easy extension with auth/rate-limit without touching business logic).
         this.logger.log("GET / called - returning runtime config status")

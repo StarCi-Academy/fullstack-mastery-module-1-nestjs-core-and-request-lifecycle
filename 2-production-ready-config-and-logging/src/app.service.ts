@@ -21,7 +21,13 @@ export class AppService {
    *
    * - Payload trạng thái runtime (EN: runtime status payload).
    */
-    getStatus() {
+    getStatus(): {
+        message: string
+        env: string
+        appName: string | undefined
+        appVersion: string | undefined
+        appPort: number | undefined
+    } {
         const env = this.configService.get<string>("app.nodeEnv") ?? "local"
         const appName = this.configService.get<string>("app.name")
         return {
