@@ -1,9 +1,12 @@
 import {
-    Controller, Get, Logger 
+    Controller, Get, Logger
 } from "@nestjs/common"
 import {
-    AppService 
+    AppService
 } from "./app.service"
+import type {
+    AppConfig,
+} from "./config"
 
 @Controller()
 export class AppController {
@@ -29,5 +32,19 @@ export class AppController {
     // (EN: keep controller thin for easy extension with auth/rate-limit without touching business logic).
         this.logger.log("GET / called - returning runtime config status")
         return this.appService.getStatus()
+    }
+
+    /**
+     * Xử lý `GET /config` — trả snapshot toàn bộ namespace `app` để minh hoạ
+     * truy xuất config qua key namespace (typed) thay vì đọc lẻ từng field.
+     * (EN: Handle `GET /config` — return the full `app` namespace snapshot to demonstrate
+     * typed namespace-key retrieval rather than reading individual fields ad-hoc.)
+     */
+    @Get("config")
+    getConfig(): AppConfig {
+        // Log để xác nhận endpoint chạy, phục vụ Flow 4 quan sát logs/app.log.
+        // (EN: Log so the endpoint hit is visible, supporting Flow 4's logs/app.log inspection.)
+        this.logger.log("GET /config called - returning AppConfig snapshot")
+        return this.appService.getConfigSnapshot()
     }
 }

@@ -1,9 +1,12 @@
 import {
-    Injectable 
+    Injectable
 } from "@nestjs/common"
 import {
-    ConfigService 
+    ConfigService
 } from "@nestjs/config"
+import type {
+    AppConfig,
+} from "./config"
 
 @Injectable()
 export class AppService {
@@ -39,5 +42,23 @@ export class AppService {
             appVersion: this.configService.get<string>("app.version"),
             appPort: this.configService.get<number>("app.port"),
         }
+    }
+
+    /**
+     * Trả snapshot toàn bộ namespace `app` của ConfigService — minh hoạ cách
+     * truy xuất typed config qua key namespace duy nhất, không đụng tới `process.env`.
+     * (EN: Return the entire `app` namespace snapshot from ConfigService — demonstrates
+     * typed config retrieval via a single namespace key, without touching `process.env`.)
+     */
+    getConfigSnapshot(): AppConfig {
+        // Lấy theo key namespace `app` để TypeScript narrow toàn bộ shape AppConfig.
+        // (EN: Retrieve by `app` namespace key so TypeScript narrows the full AppConfig shape.)
+        const snapshot = this.configService.get<AppConfig>("app")
+        if (!snapshot) {
+            // Trường hợp này chỉ xảy ra khi ConfigModule chưa load namespace `app` — báo lỗi sớm.
+            // (EN: This only occurs if ConfigModule has not loaded the `app` namespace — fail fast.)
+            throw new Error("ConfigService namespace 'app' is not loaded")
+        }
+        return snapshot
     }
 }
