@@ -1,0 +1,8 @@
+# Cấu hình mặc định — cổng đọc từ env PORT (mặc định 3000) để khớp API contract liên ngôn ngữ.
+# (EN: Default config — port read from env PORT (default 3000) to match the cross-language API contract.)
+server:
+  port: ${PORT:3000}
+# Tắt trang whitelabel/stacktrace mặc định của Spring để không lộ chi tiết ra client.
+# (EN: Disable Spring's default whitelabel/stacktrace page so internal detail is never leaked to the client.)
+server.error.include-stacktrace: never
+server.error.whitelabel.enabled: false

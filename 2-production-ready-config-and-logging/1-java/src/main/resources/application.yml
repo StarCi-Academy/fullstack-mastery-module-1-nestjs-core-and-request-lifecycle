@@ -1,0 +1,23 @@
+# application.yml (base) — chọn profile + giá trị chung mọi môi trường.
+# (EN: application.yml (base) — selects the profile + values shared across environments.)
+spring:
+  profiles:
+    # Đổi sang production qua env SPRING_PROFILES_ACTIVE, không sửa source.
+    # (EN: switch to production via SPRING_PROFILES_ACTIVE env, no source edit.)
+    active: local
+
+server:
+  # PORT env override (E2E cổng random); mặc định 3000.
+  # (EN: PORT env override (E2E random port); defaults to 3000.)
+  port: ${PORT:3000}
+
+app:
+  # version dùng chung mọi profile.
+  # (EN: version shared by all profiles.)
+  version: 0.0.1
+  # app.port bám theo server.port để config typed phản ánh cổng thật.
+  # (EN: app.port follows server.port so the typed config reflects the real port.)
+  port: ${server.port}
+  # Đường dẫn file log — logger đọc cùng nguồn config (single source of truth).
+  # (EN: log file path — the logger reads the same config source (single source of truth).)
+  log-file-path: logs/app.log

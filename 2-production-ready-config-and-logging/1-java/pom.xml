@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Spring Boot parent: quản lý version + plugin spring-boot:run.
+         (EN: Spring Boot parent: manages versions + the spring-boot:run plugin.) -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.5</version>
+        <relativePath/>
+    </parent>
+
+    <groupId>com.starci</groupId>
+    <artifactId>config-and-logging</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <!-- JDK 21 LTS. -->
+        <java.version>21</java.version>
+    </properties>
+
+    <dependencies>
+        <!-- Web starter: REST controller + Tomcat nhúng (kéo theo SLF4J + Logback).
+             (EN: Web starter: REST controllers + embedded Tomcat (brings SLF4J + Logback).) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- LogstashEncoder: encode mỗi log thành JSON một dòng cho file appender.
+             (EN: LogstashEncoder: encodes each log into one JSON line for the file appender.) -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>7.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,9 @@
+# Build artifacts cho 4 project — không commit output biên dịch.
+# (EN: Build artifacts for the 4 projects — do not commit compiled output.)
+0-typescript/dist/
+0-typescript/node_modules/
+1-java/target/
+2-csharp/bin/
+2-csharp/obj/
+3-go/error-handling-demo
+3-go/error-handling-demo.exe

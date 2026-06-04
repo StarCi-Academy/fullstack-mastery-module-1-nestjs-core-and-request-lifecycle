@@ -1,0 +1,8 @@
+com\example\cat\Cat.class
+com\example\dog\DogService.class
+com\example\DemoApplication.class
+com\example\dog\DogController.class
+com\example\cat\CatController.class
+com\example\cat\CatService.class
+com\example\dog\DogService$SpyReport.class
+com\example\dog\DogService$CatsView.class

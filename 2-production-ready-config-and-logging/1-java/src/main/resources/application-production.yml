@@ -1,0 +1,7 @@
+# application-production.yml — override khi SPRING_PROFILES_ACTIVE=production.
+# (EN: application-production.yml — override when SPRING_PROFILES_ACTIVE=production.)
+app:
+  # name/node-env mang giá trị production (đè base, không sửa source).
+  # (EN: name/node-env carry the production value (override base, no source edit).)
+  name: production
+  node-env: production

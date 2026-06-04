@@ -1,0 +1,7 @@
+# Profile local — giá trị mặc định khi APP_ENV rỗng/local.
+# (EN: local profile — defaults when APP_ENV is empty/local.)
+name: local
+version: 0.0.1
+port: 3000
+node_env: local
+log_file_path: logs/app.log

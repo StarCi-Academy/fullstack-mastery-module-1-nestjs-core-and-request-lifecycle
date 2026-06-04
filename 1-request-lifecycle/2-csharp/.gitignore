@@ -1,0 +1,4 @@
+bin/
+obj/
+srv.out.log
+srv.err.log

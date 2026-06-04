@@ -1,0 +1,7 @@
+# application-local.yml — override khi profile=local (mặc định).
+# (EN: application-local.yml — override when profile=local (default).)
+app:
+  # name/node-env mang giá trị local.
+  # (EN: name/node-env carry the local value.)
+  name: local
+  node-env: local

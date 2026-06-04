@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  logback-spring.xml — logger thống nhất: root fan-out ra CONSOLE (người đọc) + FILE JSON (máy đọc).
+  (EN: logback-spring.xml — unified logger: root fans out to CONSOLE (human) + JSON FILE (machine).)
+-->
+<configuration>
+
+    <!-- Đọc đường dẫn log từ config (single source of truth), fallback logs/app.log.
+         (EN: Read the log path from config (single source of truth), fallback logs/app.log.) -->
+    <springProperty scope="context" name="LOG_FILE" source="app.log-file-path" defaultValue="logs/app.log"/>
+
+    <!-- CONSOLE: PatternLayoutEncoder dễ đọc cho người, kèm [requestId] từ MDC.
+         (EN: CONSOLE: human-friendly PatternLayoutEncoder, with [requestId] from MDC.) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%X{requestId}] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- FILE: LogstashEncoder ghi JSON từng dòng cho aggregator truy vấn.
+         (EN: FILE: LogstashEncoder writes one JSON line per record for aggregator queries.) -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_FILE}</file>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <!-- Bỏ context properties (vd LOG_FILE) khỏi JSON; giữ MDC requestId.
+                 (EN: Drop context properties (e.g. LOG_FILE) from JSON; keep MDC requestId.) -->
+            <includeContext>false</includeContext>
+            <!-- Đổi tên key cho khớp contract: @timestamp->timestamp, level->level, logger_name->context.
+                 (EN: Rename keys to match the contract: @timestamp->timestamp, level->level, logger_name->context.) -->
+            <fieldNames>
+                <timestamp>timestamp</timestamp>
+                <message>message</message>
+                <logger>context</logger>
+                <level>level</level>
+                <version>[ignore]</version>
+                <levelValue>[ignore]</levelValue>
+                <thread>[ignore]</thread>
+            </fieldNames>
+        </encoder>
+    </appender>
+
+    <!-- root: KHAI BÁO cả hai appender MỘT lần — mọi log (Spring + app) bubble lên đây.
+         (EN: root: DECLARE both appenders ONCE — every log (Spring + app) bubbles up here.) -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

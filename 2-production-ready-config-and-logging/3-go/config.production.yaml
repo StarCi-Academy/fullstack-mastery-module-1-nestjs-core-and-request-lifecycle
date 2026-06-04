@@ -1,0 +1,7 @@
+# Profile production — kích hoạt bằng APP_ENV=production, không sửa source.
+# (EN: production profile — activated via APP_ENV=production, no source edit.)
+name: production
+version: 0.0.1
+port: 3000
+node_env: production
+log_file_path: logs/app.log
