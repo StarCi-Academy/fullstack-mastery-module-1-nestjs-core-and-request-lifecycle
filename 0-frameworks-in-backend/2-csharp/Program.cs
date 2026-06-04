@@ -14,4 +14,5 @@ app.MapGet("/cats", (CatService cat) => cat.All());
 app.MapGet("/dogs/spy", (DogService dog) => dog.SpyReport());
 app.MapGet("/dogs/cats-via-di", (DogService dog) => dog.CatsViaDI());
 
-app.Run("http://localhost:3000");
+var port = Environment.GetEnvironmentVariable("PORT") ?? "3000";
+app.Run($"http://localhost:{port}");

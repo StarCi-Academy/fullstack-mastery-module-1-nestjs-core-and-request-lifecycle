@@ -6,7 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Listen on port 3000 by default; allow the ASPNETCORE_URLS env var to override.
 if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("ASPNETCORE_URLS")))
 {
-    builder.WebHost.UseUrls("http://localhost:3000");
+    var port = Environment.GetEnvironmentVariable("PORT") ?? "3000";
+builder.WebHost.UseUrls($"http://localhost:{port}");
 }
 
 // Register the business service + filters for DI.
