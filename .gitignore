@@ -66,3 +66,9 @@ obj/
 # Go build
 *.exe
 *.test
+.next/
+out/
+.gradle/
+vendor/
+go-out.txt
+go-err.txt
