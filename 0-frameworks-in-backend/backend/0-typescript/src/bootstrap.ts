@@ -10,8 +10,10 @@ import {
 
 export async function bootstrap(): Promise<void> {
     const app = await NestFactory.create(AppModule)
-    // Hardcoded port 3000 — L0 teaches DI + module boundaries, ConfigModule
-    // is introduced in L2. Keeping a literal here keeps the lesson scope tight.)
-    await app.listen(3000,
+    // Default port 3000 — allow override via env PORT so audit/parallel tests
+    // avoid port collisions. ConfigModule is introduced in L2; here port is read
+    // directly from process.env with a numeric fallback.
+    const port = Number(process.env.PORT) || 3000
+    await app.listen(port,
         "0.0.0.0")
 }

@@ -5,6 +5,7 @@ package main
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 
@@ -27,6 +28,10 @@ func main() {
 	// Route: GET /dogs/cats-via-di — proves catSvc is the same instance (shared singleton).
 	r.GET("/dogs/cats-via-di", func(c *gin.Context) { c.JSON(http.StatusOK, dogSvc.CatsViaDI()) })
 
-	// Listen on all interfaces (0.0.0.0:3000) — change to 127.0.0.1:3000 for loopback-only.
-	_ = r.Run(":3000")
+	// Allow overriding the port via the PORT env var, defaulting to 3000.
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "3000"
+	}
+	_ = r.Run(":" + port)
 }
