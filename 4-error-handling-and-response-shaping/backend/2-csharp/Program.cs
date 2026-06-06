@@ -18,4 +18,6 @@ app.MapItemsEndpoints();
 
 // Default port 3000 — allow override via env PORT so audit/parallel tests avoid port collisions.
 var port = Environment.GetEnvironmentVariable("PORT") ?? "3000";
-app.Run($"http://0.0.0.0:{port}");
+// Bind to loopback to avoid OS firewall prompts during local testing.
+var host = Environment.GetEnvironmentVariable("HOST") ?? "127.0.0.1";
+app.Run($"http://{host}:{port}");

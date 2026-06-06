@@ -22,5 +22,5 @@ export async function bootstrap(): Promise<void> {
     // collisions without pulling in ConfigModule.)
     const port = Number(process.env.PORT) || 3000
     await app.listen(port,
-        "0.0.0.0")
+        "127.0.0.1")
 }

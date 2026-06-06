@@ -48,8 +48,8 @@ builder.Services.AddControllers();
 var port = Environment.GetEnvironmentVariable("PORT")
     ?? builder.Configuration["App:Port"]
     ?? "3000";
-// Bind to 0.0.0.0 so the server is reachable from the host during Docker/E2E runs.
-builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+// Bind to 127.0.0.1 (loopback only) to avoid Windows Firewall popup during E2E.
+builder.WebHost.UseUrls($"http://127.0.0.1:{port}");
 
 var app = builder.Build();
 

@@ -42,7 +42,7 @@ func main() {
 	r.GET("/config", handler.GetConfig(logger, cfg))
 
 	// Startup log through the unified logger (also lands in the JSON file).
-	addr := ":" + strconv.Itoa(cfg.Port)
+	addr := "127.0.0.1:" + strconv.Itoa(cfg.Port)
 	logger.Info("HTTP server starting",
 		// context makes the startup line carry the same fields as application logs.
 		zap.String("context", "Bootstrap"),

@@ -30,7 +30,7 @@ func main() {
 	if port == "" {
 		port = "3000"
 	}
-	if err := r.Run(":" + port); err != nil {
+	if err := r.Run("127.0.0.1:" + port); err != nil {
 		panic(err)
 	}
 }
