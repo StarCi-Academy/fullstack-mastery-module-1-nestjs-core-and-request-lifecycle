@@ -1,0 +1,40 @@
+[17:43:23 INF] Now listening on: http://127.0.0.1:7303
+[17:43:23 INF] Application started. Press Ctrl+C to shut down.
+[17:43:23 INF] Hosting environment: Local
+[17:43:23 INF] Content root path: C:\Repositories\ac\starci-academy-backend\.repo\fullstack-mastery-module-1-nestjs-core-and-request-lifecycle\2-production-ready-config-and-logging\backend\2-csharp
+[17:43:37 INF] Request starting HTTP/1.1 GET http://127.0.0.1:7303/ - null null
+[17:43:37 INF] Executing endpoint 'ConfigAndLogging.Controllers.AppController.GetStatus (ConfigAndLogging)'
+[17:43:37 INF] Route matched with {action = "GetStatus", controller = "App"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetStatus() on controller ConfigAndLogging.Controllers.AppController (ConfigAndLogging).
+[17:43:37 INF] GET / called - returning runtime config status
+[17:43:37 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`5[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[17:43:37 INF] Executed action ConfigAndLogging.Controllers.AppController.GetStatus (ConfigAndLogging) in 19.7378ms
+[17:43:37 INF] Executed endpoint 'ConfigAndLogging.Controllers.AppController.GetStatus (ConfigAndLogging)'
+[17:43:37 INF] HTTP GET / responded 200 in 44.7009 ms
+[17:43:37 INF] Request finished HTTP/1.1 GET http://127.0.0.1:7303/ - 200 null application/json; charset=utf-8 66.2661ms
+[17:43:37 INF] Request starting HTTP/1.1 GET http://127.0.0.1:7303/config - null null
+[17:43:37 INF] Executing endpoint 'ConfigAndLogging.Controllers.AppController.GetConfig (ConfigAndLogging)'
+[17:43:37 INF] Route matched with {action = "GetConfig", controller = "App"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetConfig() on controller ConfigAndLogging.Controllers.AppController (ConfigAndLogging).
+[17:43:37 INF] GET /config called - returning AppConfig snapshot
+[17:43:37 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`5[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[17:43:37 INF] Executed action ConfigAndLogging.Controllers.AppController.GetConfig (ConfigAndLogging) in 4.6442ms
+[17:43:37 INF] Executed endpoint 'ConfigAndLogging.Controllers.AppController.GetConfig (ConfigAndLogging)'
+[17:43:37 INF] HTTP GET /config responded 200 in 8.4008 ms
+[17:43:37 INF] Request finished HTTP/1.1 GET http://127.0.0.1:7303/config - 200 null application/json; charset=utf-8 10.8417ms
+[17:43:43 INF] Request starting HTTP/1.1 GET http://127.0.0.1:7303/ - null null
+[17:43:43 INF] Executing endpoint 'ConfigAndLogging.Controllers.AppController.GetStatus (ConfigAndLogging)'
+[17:43:43 INF] Route matched with {action = "GetStatus", controller = "App"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetStatus() on controller ConfigAndLogging.Controllers.AppController (ConfigAndLogging).
+[17:43:43 INF] GET / called - returning runtime config status
+[17:43:43 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType0`5[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[17:43:43 INF] Executed action ConfigAndLogging.Controllers.AppController.GetStatus (ConfigAndLogging) in 1.8531ms
+[17:43:43 INF] Executed endpoint 'ConfigAndLogging.Controllers.AppController.GetStatus (ConfigAndLogging)'
+[17:43:43 INF] HTTP GET / responded 200 in 4.1576 ms
+[17:43:43 INF] Request finished HTTP/1.1 GET http://127.0.0.1:7303/ - 200 null application/json; charset=utf-8 6.5788ms
+[17:43:43 INF] Request starting HTTP/1.1 GET http://127.0.0.1:7303/config - null null
+[17:43:43 INF] Executing endpoint 'ConfigAndLogging.Controllers.AppController.GetConfig (ConfigAndLogging)'
+[17:43:43 INF] Route matched with {action = "GetConfig", controller = "App"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetConfig() on controller ConfigAndLogging.Controllers.AppController (ConfigAndLogging).
+[17:43:43 INF] GET /config called - returning AppConfig snapshot
+[17:43:43 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`5[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[17:43:43 INF] Executed action ConfigAndLogging.Controllers.AppController.GetConfig (ConfigAndLogging) in 1.7484ms
+[17:43:43 INF] Executed endpoint 'ConfigAndLogging.Controllers.AppController.GetConfig (ConfigAndLogging)'
+[17:43:43 INF] HTTP GET /config responded 200 in 3.6585 ms
+[17:43:43 INF] Request finished HTTP/1.1 GET http://127.0.0.1:7303/config - 200 null application/json; charset=utf-8 5.0051ms

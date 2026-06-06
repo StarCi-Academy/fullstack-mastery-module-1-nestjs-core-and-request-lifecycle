@@ -1,0 +1,7 @@
+[32m[local][39m [32m32956[39m 6/6/2026, 5:27:34 PM [32m    LOG[39m [33m[RoutesResolver][39m [32mAppController {/}:[39m
+[32m[local][39m [32m32956[39m 6/6/2026, 5:27:34 PM [32m    LOG[39m [33m[RouterExplorer][39m [32mMapped {/, GET} route[39m
+[32m[local][39m [32m32956[39m 6/6/2026, 5:27:34 PM [32m    LOG[39m [33m[RouterExplorer][39m [32mMapped {/config, GET} route[39m
+[32m[local][39m [32m32956[39m 6/6/2026, 5:27:34 PM [32m    LOG[39m [33m[NestApplication][39m [32mNest application successfully started[39m
+[32m[local][39m [32m32956[39m 6/6/2026, 5:27:44 PM [32m    LOG[39m [33m[AppController][39m [32mGET / called - returning runtime config status[39m
+[32m[local][39m [32m32956[39m 6/6/2026, 5:27:45 PM [32m    LOG[39m [33m[AppController][39m [32mGET / called - returning runtime config status[39m
+[32m[local][39m [32m32956[39m 6/6/2026, 5:27:45 PM [32m    LOG[39m [33m[AppController][39m [32mGET /config called - returning AppConfig snapshot[39m

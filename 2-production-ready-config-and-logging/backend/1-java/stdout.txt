@@ -1,0 +1,28 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+17:41:54.392 [] INFO  com.starci.Application - Starting Application v0.0.1 using Java 21.0.11 with PID 44288 (C:\Repositories\ac\starci-academy-backend\.repo\fullstack-mastery-module-1-nestjs-core-and-request-lifecycle\2-production-ready-config-and-logging\backend\1-java\target\config-and-logging-0.0.1.jar started by Cuong in C:\Repositories\ac\starci-academy-backend\.repo\fullstack-mastery-module-1-nestjs-core-and-request-lifecycle\2-production-ready-config-and-logging\backend\1-java)
+17:41:54.407 [] INFO  com.starci.Application - The following 1 profile is active: "local"
+17:41:55.392 [] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7302 (http)
+17:41:55.401 [] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-127.0.0.1-7302"]
+17:41:55.405 [] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+17:41:55.407 [] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+17:41:55.442 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+17:41:55.444 [] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 977 ms
+17:41:55.806 [] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-127.0.0.1-7302"]
+17:41:55.841 [] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7302 (http) with context path '/'
+17:41:55.862 [] INFO  com.starci.Application - Started Application in 2.263 seconds (process running for 2.712)
+17:42:09.645 [] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+17:42:09.648 [] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+17:42:09.649 [] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+17:42:09.689 [b8e49e4d-14c8-4e1a-aeb3-c9a4c8bd1d69] INFO  com.starci.AppController - GET / called - returning runtime config status
+17:42:09.763 [9c29dda2-9478-4388-9cfb-7f7bcc131881] INFO  com.starci.AppController - GET /config called - returning AppConfig snapshot
+17:42:14.784 [bad6d142-a777-4059-854b-8172c1b36e6a] INFO  com.starci.AppController - GET / called - returning runtime config status
+17:42:14.801 [51df6ec9-eb85-422f-b013-213310d1174e] INFO  com.starci.AppController - GET /config called - returning AppConfig snapshot

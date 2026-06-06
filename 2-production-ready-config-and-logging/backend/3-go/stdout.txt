@@ -1,0 +1,9 @@
+2026-06-06T17:44:42.127+0700	[34mINFO[0m	HTTP server starting	{"context": "Bootstrap", "addr": "127.0.0.1:7304"}
+2026-06-06T17:44:51.117+0700	[34mINFO[0m	GET / called - returning runtime config status	{"context": "AppController"}
+2026-06-06T17:44:51.119+0700	[34mINFO[0m		{"status": 200, "method": "GET", "path": "/", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8457", "latency": "2.686ms", "time": "2026-06-06T10:44:51Z"}
+2026-06-06T17:44:51.135+0700	[34mINFO[0m	GET /config called - returning AppConfig snapshot	{"context": "AppController"}
+2026-06-06T17:44:51.137+0700	[34mINFO[0m		{"status": 200, "method": "GET", "path": "/config", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8457", "latency": "2.5758ms", "time": "2026-06-06T10:44:51Z"}
+2026-06-06T17:44:55.547+0700	[34mINFO[0m	GET / called - returning runtime config status	{"context": "AppController"}
+2026-06-06T17:44:55.548+0700	[34mINFO[0m		{"status": 200, "method": "GET", "path": "/", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8457", "latency": "1.0331ms", "time": "2026-06-06T10:44:55Z"}
+2026-06-06T17:44:55.558+0700	[34mINFO[0m	GET /config called - returning AppConfig snapshot	{"context": "AppController"}
+2026-06-06T17:44:55.558+0700	[34mINFO[0m		{"status": 200, "method": "GET", "path": "/config", "query": "", "ip": "127.0.0.1", "user-agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US) WindowsPowerShell/5.1.26100.8457", "latency": "0s", "time": "2026-06-06T10:44:55Z"}
