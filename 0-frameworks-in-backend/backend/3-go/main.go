@@ -1,6 +1,6 @@
-// Demo of "what a backend framework is" — Go uses gin (web framework) for
-// routing. Key contrast: gin handles HTTP, but Go has no IoC container — creating
-// and wiring dependencies (DI) is still manual at the composition root (main).)
+// Package main is the composition root for the Go frameworks-in-backend demo.
+// Go uses gin for HTTP routing but has no built-in IoC container — all dependency
+// wiring is manual, done explicitly here in main (composition root pattern).
 package main
 
 import (
@@ -13,14 +13,20 @@ import (
 )
 
 func main() {
-	// composition root: create + wire dependencies in one place (gin won't).
-	catSvc := cat.NewService()       // module cat
-	dogSvc := dog.NewService(catSvc) // inject cat.Service into dog.Service (same instance)
+	// Create cat.Service first — it is a shared singleton (same pointer reused).
+	catSvc := cat.NewService()
+	// Inject catSvc into dog.Service; no new cat.Service() inside dog (manual DI).
+	dogSvc := dog.NewService(catSvc)
 
 	r := gin.Default()
+
+	// Route: GET /cats — delegate to catSvc.All(); controller stays thin.
 	r.GET("/cats", func(c *gin.Context) { c.JSON(http.StatusOK, catSvc.All()) })
+	// Route: GET /dogs/spy — proves dogSvc can call catSvc across package boundary.
 	r.GET("/dogs/spy", func(c *gin.Context) { c.JSON(http.StatusOK, dogSvc.SpyReport()) })
+	// Route: GET /dogs/cats-via-di — proves catSvc is the same instance (shared singleton).
 	r.GET("/dogs/cats-via-di", func(c *gin.Context) { c.JSON(http.StatusOK, dogSvc.CatsViaDI()) })
 
+	// Listen on all interfaces (0.0.0.0:3000) — change to 127.0.0.1:3000 for loopback-only.
 	_ = r.Run(":3000")
 }
