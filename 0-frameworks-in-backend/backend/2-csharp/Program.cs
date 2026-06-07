@@ -19,4 +19,4 @@ app.MapGet("/dogs/cats-via-di", (DogService dog) => dog.CatsViaDI());
 
 // Read port from env so the test harness can assign a conflict-free port (e.g. PORT=3003).
 var port = Environment.GetEnvironmentVariable("PORT") ?? "3000";
-app.Run($"http://localhost:{port}");
+app.Run($"http://127.0.0.1:{port}");

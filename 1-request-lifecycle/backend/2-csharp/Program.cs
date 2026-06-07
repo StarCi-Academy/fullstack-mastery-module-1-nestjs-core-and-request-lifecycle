@@ -8,7 +8,7 @@ if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("ASPNETCORE_URLS")))
 {
     // Read PORT env so parallel audit tests can assign unique ports without editing source.
     var port = Environment.GetEnvironmentVariable("PORT") ?? "3000";
-    builder.WebHost.UseUrls($"http://localhost:{port}");
+    builder.WebHost.UseUrls($"http://127.0.0.1:{port}");
 }
 
 // Register the business service + filters for DI.

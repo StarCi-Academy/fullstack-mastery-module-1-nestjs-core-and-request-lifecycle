@@ -10,6 +10,9 @@ server:
   # PORT env override (E2E cổng random); mặc định 3000.
   # (EN: PORT env override (E2E random port); defaults to 3000.)
   port: ${PORT:3000}
+  # Bind 127.0.0.1 (loopback) để tránh popup Windows Firewall khi chạy E2E.
+  # (EN: bind 127.0.0.1 (loopback) to avoid the Windows Firewall popup during E2E.)
+  address: 127.0.0.1
 
 app:
   # version dùng chung mọi profile.

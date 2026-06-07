@@ -33,5 +33,5 @@ func main() {
 	if port == "" {
 		port = "3000"
 	}
-	_ = r.Run(":" + port)
+	_ = r.Run("127.0.0.1:" + port)
 }
